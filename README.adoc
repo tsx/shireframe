@@ -1,0 +1,156 @@
+= Shireframe
+:toc:
+:toc-placement: preamble
+
+Declarative wireframes for programmers, based on
+open web technologies.
+
+== Motivation
+
+Sometimes, you need to communicate to other people on how
+your software will look like.
+The most efficient way is to create wireframes to show functinality and layouts.
+However, if you are a programmer, it is likely that writing code is easier for you
+than drawing boxes in an unfamiliar graphics editor.
+
+*Shireframe* allows you to create wireframes by writing HTML
+using your favorite IDE, preview results in your favorite browser,
+branch/diff/merge wireframes as code in your favorite VCS
+and do anything else you usually do with source code.
+
+Shireframe includes ready-made styling for sketchy look-and-feel,
+a number of reusable components, and bundled great libraries to simplify your life.
+
+Interactivity support comes _for free_ thanks to web technologies!
+
+== Example
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://rawgit.com/tsx/shireframe/master/shireframe-r.js"></script>
+	</head>
+	<body class="drafty">
+		<browser-chrome>
+			<div class="container">
+				<menubar>
+					<logo></logo>
+					Classy app
+					<searchbar></searchbar>
+				</menubar>
+				<row>
+					<col-4>
+						<kitten></kitten>
+					</col-4>
+					<col-4>
+						<kitten></kitten>
+					</col-4>
+					<col-4>
+						<kitten></kitten>
+					</col-4>
+				</row>
+				<footer>
+					&copy; Classy Inc. 2015
+				</footer>
+			</div>
+		</browser-chrome>
+	</body>
+</html>
+----
+
+== What's inside?
+
+Shireframe includes the following libraries:
+
+* AngularJS drives the HTML and simplifies interactivity,
+* jQuery handles DOM manipulation,
+* RequireJS loads modules and styles,
+* Bootstrap provides solid foundation for layout and a number of helpful utility classes,
+* Lodash is a great utility belt,
+* Google font "Kalam" which looks hand-written while supporting both normal and bold styles (a rare combination),
+* and FontAwesome, because it _is_ awesome indeed.
+
+You can use any features from these libraries, and also include and use any other JavaScript libraries you like.
+
+== Getting started
+
+. Create an HTML5 document and include a JS script.
++
+[source, html]
+<script src="https://rawgit.com/tsx/shireframe/master/shireframe-r.js"></script>
+
+. And just start including your content into document body.
+  Make sure to use some bundled goodness described below.
+
+. Profit!
+
+== More examples
+
+TODO
+
+== Components
+
+Most components are actually AngularJS directives or special CSS styles.
+
+Here's an exhaustive list:
+
+
+== Browser support
+
+Shireframe uses cutting-edge web technologies,
+so only evergreen browsers are supported.
+Safari, Chrome, Firefox are ok.
+Sorry, IE users.
+
+Also, SVG filter which is used to distort wireframe for "sketchy" look
+is completely broken on iOS,
+so you have to opt-out of filtering
+or use pre-rendered images to show wireframes on iPads and iPhones.
+
+== Render to PNG
+
+There's a script included in make-screenshot
+directory which will render a hi-res version of your wireframe.
+
+To make it work, you have to install PhantomJS 2.0
+(1.x branch won't work) and ImageMagick.footnote:[
+PhantomJS seems to ignore SVG filters,
+so ImageMagick is used instead to achieve the same effect]
+
+On Mac OS X with MacPorts, the following commands
+will bring in everything you need.
+
+[source]
+sudo port install phantomjs
+sudo port install ImageMagick
+
+== License
+
+This project is licensed under the terms of GNU GPLv2 (GNU General Public License version 2) or later.
+
+Shireframe is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+== Contributing
+
+Fork, hack, push and pull-request. Contributions welcome!
+
+Also, please help spreading the word and freeing your fellow
+colleague programmers from having to struggle with
+mouse-driven graphics editors.
+
+== Why the name?
+
+**W** in **w**ireframe looks like russian **Ш** (sh).
+That's it.
+
+== Author
+
+Vyacheslav Tverskoy <tsx@tsx.su>
+
+If you have any questions, feedback or just want to say thanks,
+ping me at Twitter http://twitter.com/tsxxst[@tsxxst]

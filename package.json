@@ -1,0 +1,15 @@
+{
+  "name": "shireframe",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL",
+  "dependencies": {
+    "cors": "^2.5.3",
+    "express": "^4.12.3",
+    "livereload": "^0.3.7"
+  }
+}

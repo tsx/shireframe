@@ -1,0 +1,105 @@
+body, html {
+	height: 100%;
+	font-family: 'Kalam', cursive;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+
+.text-muted {
+	color: #ccc;
+}
+
+.kitten {
+	display: inline-block;
+	background-size: cover;
+	background-position: center center;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.sketchy-view {
+	filter: url(#drawing);
+	-webkit-filter: url(#drawing);
+}
+
+a {
+	text-decoration: underline;
+}
+
+.vertical-margin {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.overflow-auto {
+	overflow: auto;
+}
+
+.width-100 {
+	width: 100%;
+}
+
+footer{
+	text-align: center;
+	color: lightgray;
+}
+
+.display-block{
+	display: block;
+}
+
+.display-inline-block{
+	display: inline-block;
+}
+
+.box {
+	border: 2px solid black;
+	background: white;
+	padding: 0.3em;
+}
+
+.browser-chrome-container{
+	padding: 1em;
+	display: block;
+	width: 100%;
+}
+
+.browser-chrome-window{
+	display: block;
+	width: 100%;
+	border: 2px solid black;
+	border-radius: 0.5em 0.5em 0 0;
+	background-color: lightgray;
+}
+
+.browser-chrome-content{
+	background-color: white;
+}
+
+.browser-chrome-bar .text-title{
+	margin: 0.5em;
+	font-weight: bold;
+}
+
+.browser-chrome-toolbar {
+	margin: 0;
+	margin-top: -0.5em;
+	display: table;
+	border-collapse: separate;
+	border-spacing: 0.5em;
+}
+
+.browser-chrome-toolbar .glyphicon {
+	display: table-cell;
+	color: gray;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+}
+
+.browser-chrome-toolbar .box {
+	display: table-cell;
+	width: 100%;
+}
+

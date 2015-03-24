@@ -1,0 +1,137 @@
+define('shireframeUrl', function(){
+	return require.toUrl('.');
+});
+define(['angular', '_', '$', 'shireframeUrl', 'css!style'], function(angular, _, $, url){
+sh = angular.module("Shireframe", []);
+sh.service('templateUrl', ['$sce', function($sce){
+	return function(u){
+		return $sce.trustAsResourceUrl(url + u);
+	};
+}]);
+
+function linkedDirective(name, f){
+	sh.directive(name, function(){
+		return {restrict: 'AEC', link: f};
+	});
+}
+
+function blockyClass(name, cls, inline){
+	linkedDirective(name, function(s, e){
+		e.addClass(inline ? "display-inline-block" : "display-block");
+		e.addClass(cls ? cls : _.kebabCase(name));
+	});
+}
+
+function iconicDirective(name){
+	linkedDirective(name, function(s, e, a){
+		e.addClass(name);
+		for(k in a){
+			if(a.hasOwnProperty(k)){
+				e.addClass(name + "-" + _.kebabCase(k));
+			}
+		}
+	});
+}
+
+function textDirective(service){
+	sh.directive("text" + _.capitalize(service), [service, function(s){
+		return {
+			restrict: 'AEC',
+			link: function(scope, elem){
+				elem.html(s());
+			}
+		};
+	}]);
+}
+
+sh.directive("sketchy", function(){
+	return {
+		restrict: 'C',
+		link: function(scope, elem){
+			$('body').append('<svg height="10"><defs><filter id="drawing" y="0" height="0" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.01" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="10" /></filter></defs></svg>');
+			
+			$('body').addClass("sketchy-view");
+		}
+	}
+});
+
+blockyClass("row");
+blockyClass("box", null, true);
+
+iconicDirective("glyphicon");
+iconicDirective("fa");
+
+[1,2,3,4,5,6,7,8,9,10,11,12].forEach(function(e){
+	blockyClass("col" + e, "col-xs-" + e);
+	blockyClass("colOffset" + e, "col-xs-offset-" + e);
+});
+
+var seed = 0;
+
+function srand(){
+	seed = (seed * 9301 + 49297) % 233280;
+	return seed / 233280;
+}
+
+function srandInt(max){
+	return Math.floor(srand() * max);
+}
+
+function srandIntMin(min, maxOffset){
+	return srandInt(maxOffset) + min;
+}
+
+function srandLetterCode(){
+	return srandInt(10) + '0'.charCodeAt(0);
+}
+
+linkedDirective("kitten", function(s, e, a){
+	var id = String.fromCharCode(srandLetterCode(), srandLetterCode(), srandLetterCode());
+	var size = a.size || '100px';
+	e.addClass('kitten');
+	e.css('background-image', 'url(http://thecatapi.com/api/images/get?size=small&image_id=' + id + ')');
+	e.css('width', size);
+	e.css('height', size);
+});
+sh.directive("browserChrome", ['templateUrl', function(templateUrl){
+	return {
+		transclude: true,
+		templateUrl: templateUrl("browserChrome.html"),
+	};
+}]);
+
+textDirective("title");
+textDirective("url");
+
+sh.service("title", function($window){
+	return function(){
+		return $window.document.title ? $window.document.title : "AWESOME";
+	};
+});
+
+sh.service("url", function(title){
+	return function(){
+		return "http://" + _.kebabCase(title()) + ".com";
+	};
+});
+sh.run(function($rootScope){
+	$rootScope._ = _;
+	console.log($rootScope);
+});
+var cb = null;
+var done = false;
+$(function(){
+	angular.bootstrap(document, ["Shireframe"]);
+	done = true;
+	if(cb){
+		setTimeout(cb, 0);
+	}
+});
+return function(f){
+	if(done){
+		setTimeout(f, 0);
+	} else {
+		cb = f;
+	}
+};
+});
