@@ -40,7 +40,8 @@ page.open(address, function (status) {
 				done(function(){
 					window.setTimeout(function(){
 						window.callPhantom($('body').height());
-					}, 0);
+					}, 5000); // wait a few sec for images
+					// TODO implement image queue to notify loading finish
 				});
 			});
 		});

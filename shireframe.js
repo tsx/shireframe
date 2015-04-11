@@ -77,11 +77,13 @@ function srandLetterCode(){
 
 linkedDirective("kitten", function(s, e, a){
 	var id = String.fromCharCode(srandLetterCode(), srandLetterCode(), srandLetterCode());
-	var size = a.size || '100px';
+	var size = a.size;
 	e.addClass('kitten');
 	e.css('background-image', 'url(http://thecatapi.com/api/images/get?size=small&image_id=' + id + ')');
-	e.css('width', size);
-	e.css('height', size);
+	if(size) {
+		e.css('width', size);
+		e.css('height', size);
+	}
 });
 sh.directive("browserChrome", ['templateUrl', function(templateUrl){
 	return {

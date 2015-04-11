@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://rawgit.com/tsx/shireframe/master/shireframe-r.js"></script>
+		<title>Kitter</title>
+	</head>
+	<body>
+		<browser-chrome>
+			<div class="container-fluid">
+				<div class="vertical-margin text-center">
+					<div class="pull-left">
+						<span style="border-bottom: 4px solid black"><fa home></fa> Main</span>
+						<fa bell></fa> Notifications
+						<fa envelope></fa> Messages
+						<b>#</b> Discover
+					</div>
+					<kitten size="2em" class="img-circle"></kitten>
+					<div class="pull-right">
+						<box>Search kitter <fa search class="pull-right"></fa></box>
+						<kitten size="2em" class="img-thumbnail">&nbsp;</kitten>
+						<button class="btn btn-success"><fa pencil></fa> Purr</button>
+					</div>
+					
+				</div>
+				<div class="vertical-margin">
+					<row>
+						<col-3>
+							<kitten style="width: 100%; height: 80px"></kitten>
+							<h2>Garfield</h2>
+							@garfield
+							<row>
+								<col-3><small>Purrs:</small><br /><b>14668</b></col-3>
+								<col-3><small>Listening:</small><br /><b>639</b></col-3>
+								<col-3><small>Listeners:</small><br /><b>138576</b></col-3>
+							</row>
+							<h4>Comics trends</h4>
+							#purr<br />
+							#meow<br />
+							#shhhh<br />
+							#foobar<br />
+						</col-3>
+						<col-6>
+							<box class="width-100">What's up?<fa camera class="pull-right"></fa></box>	
+							<table class="table table-condensed" style="font-size: 130%">
+								<tr ng-repeat="p in [{u: 'Simon\'s cat', t: 'Meow purr purr meow'}, {u: 'Cheshire Cat', t: 'Most everyone\'s mad here'}, {u: 'Cheshire Cat', t: 'You may have noticed that I\'m not all there myself'}, {u: 'Cheshire Cat', t: ':)'}]">
+									<td><kitten size="3em"></kitten></td>
+									<td width="100%">
+										<b>{{p.u}}</b> <small>@{{_.snakeCase(p.u)}}</small><br />
+										{{p.t}}
+										<br>
+										<fa mail-reply></fa>
+										<fa retweet></fa>
+										<fa star></fa>
+									</td>
+								</tr>
+							</table>
+						</col-6>
+						<col-3>
+							<h4>Who to listen</h4>
+							<div class="clearfix">
+								<kitten size="3em" class="img-circle pull-left"></kitten> <b>Crookshanks</b> @crookshanks<br />
+								<button class="btn btn-default">Listen</button>
+							</div>
+							<footer class="vertical-margin">
+								&copy; <text-url></text-url> 2015
+								About Help Terms Privacy Cookies Ads Brand Blog Status Apps Jobs Media Devs
+							</footer>
+						</col-3>
+					</row>
+				</div>
+			</div>
+		</browser-chrome>
+	</body>
+</html>
