@@ -37,11 +37,11 @@ page.open(address, function (status) {
 	} else {
 		page.evaluate(function () {
 			window.require(['shireframe', '$'], function(done){
-				window.setTimeout(function(){
-					done(function(){
+				done(function(){
+					window.setTimeout(function(){
 						window.callPhantom($('body').height());
-					});
-				}, 0);
+					}, 0);
+				});
 			});
 		});
 	}
