@@ -67,9 +67,11 @@ Shireframe includes the following libraries:
 * AngularJS drives the HTML and simplifies interactivity,
 * jQuery handles DOM manipulation,
 * RequireJS loads modules and styles,
-* Bootstrap provides solid foundation for layout and a number of helpful utility classes,
+* Bootstrap provides solid foundation for layout and a number
+of helpful utility classes,
 * Lodash is a great utility belt,
-* Google font "Kalam" which looks hand-written while supporting both normal and bold styles (a rare combination),
+* Google font "Kalam" which looks hand-written while supporting
+both normal and bold styles (a rare combination),
 * and FontAwesome, because it _is_ awesome indeed.
 
 You can use any features from these libraries, and also include and use any other JavaScript libraries you like.
@@ -96,6 +98,174 @@ Most components are actually AngularJS directives or special CSS styles.
 
 Here's an exhaustive list:
 
+=== Tags
+
+NOTE: Make sure all closing elements match their opening counterparts.
+Remember that it doesn't work with self-closed tags like
+`<this />`.footnote:[https://github.com/angular/angular.js/issues/1953]
+
+==== `box`
+
+A `box` is just a div with a preset black border.
+You may use it as fake inputbox or whatever.
+Pipe symbol (`|`) may denote a cursor within such an inputbox.
+
+[source, html]
+<box>Hello there!|</box>
+<div box>as an attribute</div>
+<div class="box">class is also ok</div>
+
+==== `row`, `col-*`, `col-offset-*`
+
+A `row`, `col-1` ... `col-12` are shorthands for Bootstrap's grid classes
+`row` and `col-xs-*`.
+It is shorter to read and write than `<div class="col-md-1 col-md-offset-1">`.
+
+[source, html]
+<row>
+	<col-3 col-offset-1>First column</col-3>
+	<col-3>Second column</col-3>
+	<b col-3>Abusing B to make third column bold</b>
+</row>
+
+==== `fa`, `glyphicon`
+
+Shorthands for FontAwesome and Glyphicon classes.
+They also turn all attributes into prefixed classes.
+
+[source, html]
+<fa star></fa>
+<fa gear fw 5x spin></fa>
+<glyphicon user></glyphicon>
+
+==== `kitten`
+
+Inserts a random kitten photo from teh internet.
+Each next tag instance will have a different picture,
+but they persist across page reloads.
+Use it as a placeholder for images or user photos. Fun!
+
+[source, html]
+<kitten></kitten>
+<kitten size="5em"></kitten>
+
+==== `browser-chrome`
+
+Wrap your content in `<browser-chrome> ... </browser-chrome>`
+to have a nice fake window border with a title, address bar and nav buttons.
+Of course, they are fake and don't react to clicks, but allow you to express
+your app environment ("my app works in a web browser").
+
+[source, html]
+<browser-chrome>
+	Look, a kitty in my web browser: <kitten></kitten>
+</browser-chrome>
+
+This has nothing to do with with Google Chrome.
+It's just any browser's UI is frequently called
+_chrome_.footnote:[http://www.nngroup.com/articles/browser-and-gui-chrome/]
+
+==== `text-title`
+
+Shows the same thing as in your `<title>` or _awesome_ default if there isn't any title.
+Used in browser-chrome and potentially many other places.
+
+[source, html]
+<text-title></text-title>
+<h1 text-title></h1>
+
+==== `text-url`
+
+Like `text-title`, but transforms it to fake url like `http://awesome.com`.
+
+[source, html]
+<text-url></text-url>
+<a text-url></a>
+
+==== Planned for future
+
+* [ ] `my-profile-photo` which is the same in every tag instance
+* [ ] `random-profile-photo` which is different in every tag instance
+* [ ] `random-logo` an abstract shape
+* [ ] `login-form` username-password (or email-password) form with a "login" button
+* [ ] `template-navbar` a ready navbar will include
+random-logo, title, searchbar,
+gear button (aka settings), my-profile-photo and a logout button
+* [ ] `template-footer` a ready footer will include a made-up
+copyright statement and a few made-up links
+* [ ] `ipad-chrome` with orientation parameter
+* [ ] `ipad-browser-chrome`
+* [ ] `iphone-chrome`
+* [ ] `iphone-browser-chrome`
+* [ ] `android-chrome`
+* [ ] `mac-native-app-chrome`
+* [ ] `windows-native-app-chrome`
+* [ ] `lorem-ipsum` placeholder text that looks like latin
+* [ ] `nonsense` random placeholder text that looks like
+syntactically correct English but has no meaning
+* [ ] `video-player`
+* [ ] `audio-player`
+* [ ] `cheerful-comment`
+* [ ] `angry-comment`
+* [ ] `random-pie-chart` based on d3.js and c3.js
+* [ ] `random-bar-chart`
+* [ ] `random-line-chart`
+
+and more... Contributions welcome!
+
+=== CSS classes
+
+With one-time wireframes that will be thrown out soon,
+it is likely that you won't care about separating
+and reusing future-proof CSS rules.
+Instead, inline styles are the way to go.
+
+That's why I provide a number of helper
+classes for you to use along with Bootstrap's tools to perform common tasks.
+
+==== `h*, .h*`
+
+Overrides Bootstrap's font-weight to 600
+which is supported by bundled handwriting font.
+
+==== `vertical-margin`
+
+Adds 1em vertical space to the top and bottom of your element.
+
+[source, html]
+<row class="vertical-margin"></row>
+
+==== `overflow-auto`
+
+An alias for `style="overflow: auto"`
+
+==== `width-100`
+
+An alias for `style="width: 100%"`
+
+==== `display-block`
+
+An alias for `style="display: block"`
+
+==== `display-inline-block`
+
+An alias for `style="display: inline-block"`
+
+== Interactivity
+
+TODO
+
+== Data-driven
+
+TODO
+
+== Create your own reusable components / API
+
+TODO
+
+== Including other scripts & code
+
+TODO
 
 == Browser support
 
@@ -131,7 +301,7 @@ sudo port install ImageMagick
 This project is licensed under the terms of GNU GPLv2 (GNU General Public License version 2) or later.
 
 Shireframe is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
+but WITHOUT ANY WARRANTY; without even the impliged warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 

@@ -20,8 +20,8 @@ body, html {
 }
 
 .sketchy-view {
-	filter: url(#drawing);
-	-webkit-filter: url(#drawing);
+	filter: url(#sketchy-filter);
+	-webkit-filter: url(#sketchy-filter);
 }
 
 a {

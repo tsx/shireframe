@@ -25,9 +25,10 @@ function blockyClass(name, cls, inline){
 function iconicDirective(name){
 	linkedDirective(name, function(s, e, a){
 		e.addClass(name);
-		for(k in a){
-			if(a.hasOwnProperty(k)){
+		for(var k in a){
+			if(a.hasOwnProperty(k) && !k.startsWith('$')){
 				e.addClass(name + "-" + _.kebabCase(k));
+				e.addClass(name + "-" + k);
 			}
 		}
 	});
@@ -44,29 +45,18 @@ function textDirective(service){
 	}]);
 }
 
-sh.directive("sketchy", function(){
-	return {
-		restrict: 'C',
-		link: function(scope, elem){
-			$('body').append('<svg height="10"><defs><filter id="drawing" y="0" height="0" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.01" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="10" /></filter></defs></svg>');
-			
-			$('body').addClass("sketchy-view");
-		}
-	}
-});
-
-blockyClass("row");
 blockyClass("box", null, true);
 
 iconicDirective("glyphicon");
 iconicDirective("fa");
 
+blockyClass("row");
 [1,2,3,4,5,6,7,8,9,10,11,12].forEach(function(e){
 	blockyClass("col" + e, "col-xs-" + e);
 	blockyClass("colOffset" + e, "col-xs-offset-" + e);
 });
 
-var seed = 0;
+var seed = 1;
 
 function srand(){
 	seed = (seed * 9301 + 49297) % 233280;
@@ -121,6 +111,9 @@ sh.run(function($rootScope){
 var cb = null;
 var done = false;
 $(function(){
+	$('body').append('<svg height="10"><defs><filter id="sketchy-filter" y="0" height="0" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.01" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="10" /></filter></defs></svg>');
+			
+	$('body').addClass("sketchy-view");
 	angular.bootstrap(document, ["Shireframe"]);
 	done = true;
 	if(cb){
