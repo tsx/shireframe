@@ -4,6 +4,7 @@ require.config({
 		'angular': 'http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min',
 		'_': 'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min',
 		'$': 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
+		'webFontLoader': 'https://cdnjs.cloudflare.com/ajax/libs/webfont/1.5.16/webfontloader',
 		'bootstrap': 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min',
 		'css': 'http://cdnjs.cloudflare.com/ajax/libs/require-css/0.1.5/css',
 		'bootstrap-css': 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min',
@@ -17,6 +18,7 @@ require.config({
 		'$': {exports: '$'},
 		'bootstrap': ['css!bootstrap-css', '$'], 
 		'css!style': ['bootstrap', 'bootstrap', 'css!font', 'css!font-awesome'], 
+		'webFontLoader': {exports: 'WebFont'},
 	}
 });
 require(['shireframe']);

@@ -1,7 +1,7 @@
 define('shireframeUrl', function(){
 	return require.toUrl('.');
 });
-define(['angular', '_', '$', 'shireframeUrl', 'css!style'], function(angular, _, $, url){
+define(['angular', '_', '$', 'shireframeUrl', 'fonts','css!style'], function(angular, _, $, url, fontsPromise){
 sh = angular.module("Shireframe", []);
 sh.service('templateUrl', ['$sce', function($sce){
 	return function(u){
@@ -26,7 +26,7 @@ function iconicDirective(name){
 	linkedDirective(name, function(s, e, a){
 		e.addClass(name);
 		for(var k in a){
-			if(a.hasOwnProperty(k) && !k.startsWith('$')){
+			if(a.hasOwnProperty(k) && k.indexOf("$") === -1){
 				e.addClass(name + "-" + _.kebabCase(k));
 				e.addClass(name + "-" + k);
 			}
@@ -106,25 +106,20 @@ sh.service("url", function(title){
 });
 sh.run(function($rootScope){
 	$rootScope._ = _;
-	console.log($rootScope);
 });
-var cb = null;
-var done = false;
+var bootstrapDeferred = $.Deferred();
 $(function(){
 	$('body').append('<svg height="10"><defs><filter id="sketchy-filter" y="0" height="0" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.01" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="10" /></filter></defs></svg>');
 			
 	$('body').addClass("sketchy-view");
 	angular.bootstrap(document, ["Shireframe"]);
 	done = true;
-	if(cb){
-		setTimeout(cb, 0);
-	}
+	setTimeout(function(){
+		bootstrapDeferred.resolve();
+	}, 0);
 });
+var loadPromise = $.when(fontsPromise, bootstrapDeferred.promise());
 return function(f){
-	if(done){
-		setTimeout(f, 0);
-	} else {
-		cb = f;
-	}
+	loadPromise.then(f);
 };
 });
