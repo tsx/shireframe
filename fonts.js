@@ -3,11 +3,9 @@ define(['$', 'webFontLoader'], function($, webFontLoader){
 	webFontLoader.load({
 		active: function(){
 			fontDeferred.resolve();
-			console.log('a');
 		},
 		inactive: function(){
 			fontDeferred.reject();
-			console.log('f');
 		},
 		custom: {
 			families: ['FontAwesome', 'Kalam', 'Glyphicons Halflings'],
