@@ -25,34 +25,44 @@ Interactivity support comes _for free_ thanks to web technologies!
 
 == Example
 
+image::examples/doodle.jpg[]
+
 [source, html]
 ----
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="https://rawgit.com/tsx/shireframe/master/shireframe-r.js"></script>
+		<script src="http://rawgit.com/tsx/shireframe/master/shireframe-r.js"></script>
+		<title>Doodle</title>
 	</head>
-	<body class="drafty">
+	<body>
 		<browser-chrome>
-			<div class="container">
-				<menubar>
-					<logo></logo>
-					Classy app
-					<searchbar></searchbar>
-				</menubar>
-				<row>
-					<col-4>
-						<kitten></kitten>
-					</col-4>
-					<col-4>
-						<kitten></kitten>
-					</col-4>
-					<col-4>
-						<kitten></kitten>
-					</col-4>
-				</row>
-				<footer>
-					&copy; Classy Inc. 2015
+			<div class="container-fluid">
+				<div class="text-right vertical-margin">
+					<a>~Me</a>
+					<a>Mail</a>
+					<a>Pictures</a>
+					<glyphicon th></glyphicon>
+					<glyphicon user></glyphicon>
+				</div>
+				<div class="vertical-margin">
+					<row>
+						<col-6 col-offset-3>
+							<h1 class="text-title text-center"></h1>
+							<box class="width-100 vertical-margin">|</box>
+						</col-6>
+					</row>
+					<row>
+						<col-3 col-offset-3>
+							<button class="btn btn-default width-100">Doodle search</button>
+						</col-3>
+						<col-3>
+							<button class="btn btn-default width-100">I'm feeling doodley</button>
+						</col-3>
+					</row>
+				</div>
+				<footer class="vertical-margin">
+					&copy; <text-url></text-url> 2015
 				</footer>
 			</div>
 		</browser-chrome>
