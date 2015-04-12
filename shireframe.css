@@ -18,11 +18,6 @@ body, html {
 	filter: grayscale(100%);
 }
 
-.sketchy-view {
-	filter: url(#sketchy-filter);
-	-webkit-filter: url(#sketchy-filter);
-}
-
 a {
 	text-decoration: underline;
 }
