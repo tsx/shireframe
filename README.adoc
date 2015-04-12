@@ -7,9 +7,9 @@ open web technologies.
 
 == Motivation
 
-Sometimes, you need to communicate to other people on how
-your software will look like.
-The most efficient way is to create wireframes to show functinality and layouts.
+Sometimes, you need to communicate to other people on what
+your software will do and how.
+The most efficient way is to create wireframes to show functionality and layouts.
 However, if you are a programmer, it is likely that writing code is easier for you
 than drawing boxes in an unfamiliar graphics editor.
 
@@ -100,7 +100,9 @@ You can use any features from these libraries, and also include and use any othe
 
 == More examples
 
-TODO
+See the source code in `examples` folder
+
+image::examples/kitter.jpg[]
 
 == Components
 
@@ -263,7 +265,16 @@ An alias for `style="display: inline-block"`
 
 == Interactivity
 
-TODO
+In the simplest form, you could create several `*.html` files,
+and link them together using `<a href="...">` links.
+You probably know that already :-)
+
+Another possibility is to use AngularJS directives
+that add behavior like `ng-click`.
+Refer to AngularJS docs for more info.
+
+Just remember that your wireframe is an ordinary HTML page
+and you can do anything you want with the page.
 
 == Data-driven
 
