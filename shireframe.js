@@ -92,6 +92,18 @@ sh.directive("browserChrome", ['templateUrl', function(templateUrl){
 	};
 }]);
 
+sh.directive("cheerfulComment", ['cheerfulCommentService', function(cheerfulCommentService) {
+
+	return {
+		restrict: "EA",
+		controller: function() {
+			this.comment = cheerfulCommentService();
+		},
+		controllerAs: "ccCtrl",
+		template: "{{ccCtrl.comment}}"
+	};
+}]);
+
 sh.directive("loremIpsum", function() {
 	return {
 		restrict: 'EA',
@@ -113,6 +125,30 @@ sh.service("url", function(title){
 		return "http://" + _.kebabCase(title()) + ".com";
 	};
 });
+
+sh.service("cheerfulCommentService", function() {
+	var comments = [
+		"Purrrr!",
+		"Hey, this is awesome!  Keep it up!",
+		":D",
+		"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
+		"Lorem ipsum happy happy joy joy, etc.",
+		"=^.^="
+	];
+
+	var commentIndex = -1;
+
+	return function() {
+		++commentIndex;
+
+		if (commentIndex >= comments.length) {
+			commentIndex = 0;
+		}
+
+		return comments[commentIndex];
+	};
+});
+
 sh.run(function($rootScope){
 	$rootScope._ = _;
 });
