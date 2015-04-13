@@ -171,7 +171,6 @@ sh.service("url", function(title){
 	};
 });
 
-
 sh.run(function($rootScope){
 	$rootScope._ = _;
 });
