@@ -93,7 +93,6 @@ sh.directive("browserChrome", ['templateUrl', function(templateUrl){
 }]);
 
 sh.directive("cheerfulComment", ['cheerfulCommentService', function(cheerfulCommentService) {
-
 	return {
 		restrict: "EA",
 		controller: function() {
@@ -101,6 +100,17 @@ sh.directive("cheerfulComment", ['cheerfulCommentService', function(cheerfulComm
 		},
 		controllerAs: "ccCtrl",
 		template: "{{ccCtrl.comment}}"
+	};
+}]);
+
+sh.directive("angryComment", ['angryCommentService', function(angryCommentService) {
+	return {
+		restrict: "EA",
+		controller: function() {
+			this.comment = angryCommentService();
+		},
+		controllerAs: "acCtrl",
+		template: "{{acCtrl.comment}}"
 	};
 }]);
 
@@ -126,16 +136,7 @@ sh.service("url", function(title){
 	};
 });
 
-sh.service("cheerfulCommentService", function() {
-	var comments = [
-		"Purrrr!",
-		"Hey, this is awesome!  Keep it up!",
-		":D",
-		"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
-		"Lorem ipsum happy happy joy joy, etc.",
-		"=^.^="
-	];
-
+function commentService(comments) {
 	var commentIndex = -1;
 
 	return function() {
@@ -147,6 +148,32 @@ sh.service("cheerfulCommentService", function() {
 
 		return comments[commentIndex];
 	};
+}
+
+
+sh.service("cheerfulCommentService", function() {
+	var comments = [
+		"Purrrr!",
+		"Hey, this is awesome!  Keep it up!",
+		":D",
+		"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
+		"Lorem ipsum happy happy joy joy, etc.",
+		"=^.^="
+	];
+
+	return commentService(comments);
+});
+
+sh.service("angryCommentService", function() {
+	var comments = [
+		"How could you do this?  This is terrible!",
+		"I really hate this.  Please fix it.",
+		"WHARRGARBL",
+		"I'm going to express my anger quietly and eloquently.  But I'm really angry and will burn down your house.",
+		">.<"
+	];
+
+	return commentService(comments);
 });
 
 sh.run(function($rootScope){
