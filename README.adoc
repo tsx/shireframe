@@ -336,7 +336,7 @@ mouse-driven graphics editors.
 
 == Why the name?
 
-**W** in **w**ireframe looks like russian **Ш** (sh).
+**W** in **w**ireframe looks like Cyrillic **Ш** (sh).
 That's it.
 
 == Author
