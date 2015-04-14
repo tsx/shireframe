@@ -92,6 +92,70 @@ sh.directive("browserChrome", ['templateUrl', function(templateUrl){
 	};
 }]);
 
+function commentGenerator(comments) {
+	var commentIndex = -1;
+
+	return function() {
+		++commentIndex;
+
+		if (commentIndex >= comments.length) {
+			commentIndex = 0;
+		}
+
+		return comments[commentIndex];
+	};
+}
+
+sh.directive("cheerfulComment", function() {
+	var comments = [
+		"Purrrr!",
+		"Hey, this is awesome!  Keep it up!",
+		":D",
+		"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
+		"Lorem ipsum happy happy joy joy, etc.",
+		"=^.^="
+	];
+
+	var generator = commentGenerator(comments);
+
+	return {
+		restrict: "EA",
+		controller: function() {
+			this.comment = generator();
+		},
+		controllerAs: "ccCtrl",
+		template: "{{ccCtrl.comment}}"
+	};
+});
+
+sh.directive("angryComment", function() {
+	var comments = [
+		"How could you do this?  This is terrible!",
+		"I really hate this.  Please fix it.",
+		"WHARRGARBL",
+		"I'm going to express my anger quietly and eloquently.  But I'm really angry and will burn down your house.",
+		">.<"
+	];
+
+	var generator = commentGenerator(comments);
+
+	return {
+		restrict: "EA",
+		controller: function() {
+			this.comment = generator();
+		},
+		controllerAs: "acCtrl",
+		template: "{{acCtrl.comment}}"
+	};
+});
+
+sh.directive("loremIpsum", function() {
+	return {
+		restrict: 'EA',
+		template: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.'
+	};
+});
+
 textDirective("title");
 textDirective("url");
 
@@ -106,6 +170,7 @@ sh.service("url", function(title){
 		return "http://" + _.kebabCase(title()) + ".com";
 	};
 });
+
 sh.run(function($rootScope){
 	$rootScope._ = _;
 });
