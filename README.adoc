@@ -194,6 +194,24 @@ Like `text-title`, but transforms it to fake url like `http://awesome.com`.
 <text-url></text-url>
 <a text-url></a>
 
+==== `angry-comment`, `cheerful-comment`
+
+Inserts a comment which expresses dissatisfaction or satisfaction.
+
+[source, html]
+<cheerful-comment></cheerful-comment>
+<angry-comment></angry-comment>
+<p cheerful-comment></p>
+
+==== `lorem-ipsum`
+
+Inserts a widely-known placeholder text.
+
+TODO: add `words` parameter which limits number of words in output (useful for smaller text blocks)
+
+[source, html]
+<lorem-ipsum></lorem-ipsum>
+
 ==== Planned for future
 
 * [ ] `my-profile-photo` which is the same in every tag instance
@@ -212,13 +230,10 @@ copyright statement and a few made-up links
 * [ ] `android-chrome`
 * [ ] `mac-native-app-chrome`
 * [ ] `windows-native-app-chrome`
-* [ ] `lorem-ipsum` placeholder text that looks like latin
 * [ ] `nonsense` random placeholder text that looks like
 syntactically correct English but has no meaning
 * [ ] `video-player`
 * [ ] `audio-player`
-* [ ] `cheerful-comment`
-* [ ] `angry-comment`
 * [ ] `random-pie-chart` based on d3.js and c3.js
 * [ ] `random-bar-chart`
 * [ ] `random-line-chart`

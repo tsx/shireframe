@@ -34,7 +34,7 @@ function iconicDirective(name){
 	});
 }
 
-function textDirective(service){
+function textServiceDirective(service){
 	sh.directive("text" + _.capitalize(service), [service, function(s){
 		return {
 			restrict: 'AEC',
@@ -106,48 +106,34 @@ function commentGenerator(comments) {
 	};
 }
 
-sh.directive("cheerfulComment", function() {
-	var comments = [
-		"Purrrr!",
-		"Hey, this is awesome!  Keep it up!",
-		":D",
-		"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
-		"Lorem ipsum happy happy joy joy, etc.",
-		"=^.^="
-	];
+function textGeneratorDirective(name, generator){
+	sh.directive(name, function(){
+		return {
+			restrict: 'AEC',
+			link: function(scope, elem, attrs){
+				elem.text(generator());
+			}
+		}
+	});
+}
 
-	var generator = commentGenerator(comments);
+textGeneratorDirective("cheerfulComment", commentGenerator([
+	"Purrrr!",
+	"Hey, this is awesome!  Keep it up!",
+	":D",
+	"This makes me all warm and fuzzy.  If only more people could save kittens like you.",
+	"Lorem ipsum happy happy joy joy, etc.",
+	"=^.^="
+]));
 
-	return {
-		restrict: "EA",
-		controller: function() {
-			this.comment = generator();
-		},
-		controllerAs: "ccCtrl",
-		template: "{{ccCtrl.comment}}"
-	};
-});
 
-sh.directive("angryComment", function() {
-	var comments = [
-		"How could you do this?  This is terrible!",
-		"I really hate this.  Please fix it.",
-		"WHARRGARBL",
-		"I'm going to express my anger quietly and eloquently.  But I'm really angry and will burn down your house.",
-		">.<"
-	];
-
-	var generator = commentGenerator(comments);
-
-	return {
-		restrict: "EA",
-		controller: function() {
-			this.comment = generator();
-		},
-		controllerAs: "acCtrl",
-		template: "{{acCtrl.comment}}"
-	};
-});
+textGeneratorDirective("angryComment", commentGenerator([
+	"How could you do this?  This is terrible!",
+	"I really hate this.  Please fix it.",
+	"WHARRGARBL",
+	"I'm going to express my anger quietly and eloquently.  But I'm really angry and will burn down your house.",
+	">.<"
+]));
 
 sh.directive("loremIpsum", function() {
 	return {
@@ -156,8 +142,8 @@ sh.directive("loremIpsum", function() {
 	};
 });
 
-textDirective("title");
-textDirective("url");
+textServiceDirective("title");
+textServiceDirective("url");
 
 sh.service("title", function($window){
 	return function(){
