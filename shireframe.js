@@ -162,10 +162,13 @@ sh.run(function($rootScope){
 });
 var bootstrapDeferred = $.Deferred();
 $(function(){
+	var body = $('body');
 	$('body').append('<svg xmlns="http://www.w3.org/2000/svg" height="10"><defs><filter id="sketchy-filter" x="0" y="0" height="100%" width="100%" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.015" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="7" /></filter></defs></svg>');
-			
-	$('body').css("filter", "url('#sketchy-filter')");
-	$('body').css("-webkit-filter", "url('#sketchy-filter')");
+	var script = window.shireframeScript;
+	if(!script || !script.hasAttribute('no-sketchy-filter')){
+		body.css("filter", "url('#sketchy-filter')");
+		body.css("-webkit-filter", "url('#sketchy-filter')");
+	}
 	angular.bootstrap(document, ["Shireframe"]);
 	done = true;
 	setTimeout(function(){

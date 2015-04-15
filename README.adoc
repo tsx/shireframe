@@ -96,6 +96,8 @@ You can use any features from these libraries, and also include and use any othe
 . And just start including your content into document body.
   Make sure to use some bundled goodness described below.
 
+. Open your HTML5 document in your favorite browser.
+
 . Profit!
 
 == More examples
@@ -109,6 +111,18 @@ image::examples/kitter.jpg[]
 Most components are actually AngularJS directives or special CSS styles.
 
 Here's an exhaustive list:
+
+=== Settings
+
+When including shireframe-r.js, you can add attributes to the `<script>` tag to modify behaviour. Available options are:
+
+* `no-sketchy-filter` removes line "waviness"
+* more to come...
+
+Example:
+
+[source, html]
+<script src="http://rawgit.com/tsx/shireframe/master/shireframe-r.js" no-sketchy-filter></script>
 
 === Tags
 
