@@ -7,7 +7,7 @@ server.use(cors());
 
 server.use(express.static('.'));
 
-server.listen(8888);
+server.listen(+process.env.PORT || 8888);
 
 livereload = require('livereload');
 server = livereload.createServer();

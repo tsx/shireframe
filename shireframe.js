@@ -142,6 +142,17 @@ sh.directive("loremIpsum", function() {
 	};
 });
 
+sh.directive("tooltip", function(){
+	return {
+		restrict: 'A',
+		transclude: true,
+		template: '<div class="tooltip-wrapper"><ng-transclude></ng-transclude><div class="tooltip-arrow"></div><div class="tooltip-content">{{title}}</div></div>',
+		link: function(scope, elem, attr){
+			scope.title = attr.title;
+		}
+	}
+});
+
 textServiceDirective("title");
 textServiceDirective("url");
 

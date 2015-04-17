@@ -145,7 +145,7 @@ Pipe symbol (`|`) may denote a cursor within such an inputbox.
 
 A `row`, `col-1` ... `col-12` are shorthands for Bootstrap's grid classes
 `row` and `col-xs-*`.
-It is shorter to read and write than `<div class="col-md-1 col-md-offset-1">`.
+It is shorter to read and write than `<div class="col-xs-1 col-xs-offset-1">`.
 
 [source, html]
 <row>
