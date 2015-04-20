@@ -334,6 +334,9 @@ or use pre-rendered images to show wireframes on iPads and iPhones.
 There's a script included in make-screenshot
 directory which will render a hi-res version of your wireframe.
 
+[source, shell]
+shireframe/make-screenshot/make-screenshot.sh http://wherever.your/wireframe/is.html render.jpg
+
 To make it work, you have to install PhantomJS 2.0
 (1.x branch won't work) and ImageMagick.footnote:[
 PhantomJS seems to ignore SVG filters,
