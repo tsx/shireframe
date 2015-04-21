@@ -311,7 +311,24 @@ TODO
 
 == Create your own reusable components / API
 
-TODO
+You can refactor your templates to reusable components.
+Extract bits and pieces into separate html files and register
+them using `partials` attribute on shireframe `script` tag.
+
+[source, html]
+wireframe.html:
+<script src="http://rawgit.com/tsx/shireframe/master/shireframe-r.js" partials="my-partial another-partial"></script>
+<my-partial></my-partial>
+<another-partial>My content</another-partial>
+
+[source, html]
+my-partial.html:
+<b>Hey, I'm partial!</b>
+
+
+[source, html]
+another-partial.html:
+<i>Here's your content: <ng-transclude></ng-transclude></i>
 
 == Including other scripts & code
 

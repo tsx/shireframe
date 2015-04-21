@@ -2,12 +2,22 @@ define('shireframeUrl', function(){
 	return require.toUrl('.');
 });
 define(['angular', '_', '$', 'shireframeUrl', 'fonts','css!style'], function(angular, _, $, url, fontsPromise){
-sh = angular.module("Shireframe", []);
+
+var sh = angular.module("Shireframe", []);
+
+var script = window.shireframeScript;
+
 sh.service('templateUrl', ['$sce', function($sce){
 	return function(u){
 		return $sce.trustAsResourceUrl(url + u);
 	};
 }]);
+
+function nonInjectedDirective(name, obj){
+	sh.directive(name, function(){
+		return obj;
+	});
+}
 
 function linkedDirective(name, f){
 	sh.directive(name, function(){
@@ -168,14 +178,24 @@ sh.service("url", function(title){
 	};
 });
 
+if(script && script.hasAttribute('partials')){
+	script.getAttribute('partials').split(" ").forEach(function(e){
+		nonInjectedDirective(_.camelCase(e), {
+			transclude: true,
+			templateUrl: e + ".html"
+		});
+	});
+}
+
 sh.run(function($rootScope){
 	$rootScope._ = _;
 });
+
 var bootstrapDeferred = $.Deferred();
+
 $(function(){
 	var body = $('body');
 	$('body').append('<svg xmlns="http://www.w3.org/2000/svg" height="10"><defs><filter id="sketchy-filter" x="0" y="0" height="100%" width="100%" color-interpolation-filters="sRGB"><feTurbulence result="turbulenceresult" type="fractalNoise" numOctaves="2" baseFrequency="0.015" in="SourceGraphic" /><feDisplacementMap in2="turbulenceresult" in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="7" /></filter></defs></svg>');
-	var script = window.shireframeScript;
 	if(!script || !script.hasAttribute('no-sketchy-filter')){
 		body.css("filter", "url('#sketchy-filter')");
 		body.css("-webkit-filter", "url('#sketchy-filter')");
