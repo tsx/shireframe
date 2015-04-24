@@ -27,6 +27,10 @@ Interactivity support comes _for free_ thanks to web technologies!
 
 image::examples/doodle.jpg[]
 
+Live demo: http://rawgit.com/tsx/shireframe/master/examples/doodle.html
+
+Source:
+
 [source, html]
 ----
 <!DOCTYPE html>
@@ -103,6 +107,8 @@ You can use any features from these libraries, and also include and use any othe
 == More examples
 
 See the source code in `examples` folder
+
+Live demo: http://rawgit.com/tsx/shireframe/master/examples/kitter.html
 
 image::examples/kitter.jpg[]
 
