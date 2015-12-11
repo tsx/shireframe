@@ -225,11 +225,10 @@ Inserts a comment which expresses dissatisfaction or satisfaction.
 
 ==== `lorem-ipsum`
 
-Inserts a widely-known placeholder text.
-
-TODO: add `words` parameter which limits number of words in output (useful for smaller text blocks)
+Inserts a widely-known placeholder text of _N_ characters length.
 
 [source, html]
+<p lorem-ipsum="100"></p>
 <lorem-ipsum></lorem-ipsum>
 
 ==== Planned for future
